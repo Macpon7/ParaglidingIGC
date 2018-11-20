@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"bitbucket.org/adrianceng/paraglidingigc/pkg/storage"
+	"github.com/Macpon7/paraglidingigc/pkg/storage"
 	"github.com/gorilla/mux"
 )
 

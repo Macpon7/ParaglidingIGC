@@ -1,4 +1,4 @@
-module bitbucket.org/adrianceng/paraglidingigc
+module github.com/Macpon7/paraglidingigc
 
 require (
 	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8
