@@ -1,0 +1,8 @@
+{
+    "database": {
+        "username": "adrianceng",
+        "password": "",
+        "uriprefix": "mongodb://",
+        "host": "@ds1116"
+    }
+}
