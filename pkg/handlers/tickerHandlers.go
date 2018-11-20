@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/Macpon7/paraglidingigc/pkg/storage"
+	"github.com/Macpon7/ParaglidingIGC/pkg/storage"
 	"github.com/gorilla/mux"
 )
 
