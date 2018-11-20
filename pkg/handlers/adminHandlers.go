@@ -3,8 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
-
-	"github.com/Macpon7/ParaglidingIGC/pkg/storage"
+	"paragliding/pkg/storage"
 )
 
 //TracksCountHandler returns the total amount of tracks in the database

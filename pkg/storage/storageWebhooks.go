@@ -5,8 +5,10 @@ import (
 	bson "github.com/globalsign/mgo/bson"
 )
 
+//WebhookDB ...
 var WebhookDB WebhookStorage
 
+//WebhookStorage ...
 type WebhookStorage interface {
 	AddWebhook(inFile WebhookInfo) string
 	CountWebhooks() int
@@ -16,6 +18,7 @@ type WebhookStorage interface {
 	CheckWebhooks() []WebhookInfo
 }
 
+//AddWebhook ...
 func (db *MongoDBWebHook) AddWebhook(inFile WebhookInfo) string {
 	session, err := mgo.Dial(db.DatabaseURL)
 	if err != nil {
@@ -36,6 +39,7 @@ func (db *MongoDBWebHook) AddWebhook(inFile WebhookInfo) string {
 	return id
 }
 
+//CountWebhooks ...
 func (db *MongoDBWebHook) CountWebhooks() int {
 	session, err := mgo.Dial(db.DatabaseURL)
 	if err != nil {
@@ -51,6 +55,7 @@ func (db *MongoDBWebHook) CountWebhooks() int {
 	return out
 }
 
+//DeleteWebhook ...
 func (db *MongoDBWebHook) DeleteWebhook(id string) WebhookInfo {
 	session, err := mgo.Dial(db.DatabaseURL)
 	if err != nil {
@@ -76,6 +81,7 @@ func (db *MongoDBWebHook) DeleteWebhook(id string) WebhookInfo {
 	return response
 }
 
+//ReadHookIDS ...
 func (db *MongoDBWebHook) ReadHookIDS() []string {
 	session, err := mgo.Dial(db.DatabaseURL)
 	if err != nil {
@@ -99,6 +105,7 @@ func (db *MongoDBWebHook) ReadHookIDS() []string {
 	return idSlice
 }
 
+//ReadWebhook ...
 func (db *MongoDBWebHook) ReadWebhook(id string) WebhookInfo {
 	session, err := mgo.Dial(db.DatabaseURL)
 	if err != nil {
@@ -118,6 +125,7 @@ func (db *MongoDBWebHook) ReadWebhook(id string) WebhookInfo {
 	return response
 }
 
+//CheckWebhooks ...
 func (db *MongoDBWebHook) CheckWebhooks() []WebhookInfo {
 	session, err := mgo.Dial(db.DatabaseURL)
 	if err != nil {

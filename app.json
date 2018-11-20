@@ -1,0 +1,11 @@
+{
+    "name": "ParaglidingIGC",
+    "description": "Simple web app bullshit",
+    "keywords": [
+        "paragliding",
+        "igc"
+      ],
+    "image": "heroku/go:1.7",
+    "repository": "http://github.com/Macpon7/ParaglidingIGC"
+}
+  

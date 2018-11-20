@@ -85,7 +85,7 @@ func (db *MongoDB) DeleteTracks() {
 	return
 }
 
-//ReadIDS returns the array of ids of all tracks in the database
+//ReadTrackIDS returns the array of ids of all tracks in the database
 func (db *MongoDB) ReadTrackIDS() []string {
 	session, err := mgo.Dial(db.DatabaseURL)
 	if err != nil {

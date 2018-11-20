@@ -4,10 +4,9 @@ import (
 	"bytes"
 	"encoding/json"
 	"net/http"
+	"paragliding/pkg/storage"
 	"strconv"
 	"time"
-
-	"github.com/Macpon7/ParaglidingIGC/pkg/storage"
 )
 
 //WebhookOut returns

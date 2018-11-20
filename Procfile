@@ -1,1 +1,1 @@
-web: paraglidingigc
+web: cmd

@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/Macpon7/ParaglidingIGC/pkg/handlers"
-	"github.com/Macpon7/ParaglidingIGC/pkg/storage"
+	"paragliding/pkg/handlers"
+	"paragliding/pkg/storage"
 
 	"github.com/gorilla/mux"
 )

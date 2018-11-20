@@ -22,6 +22,7 @@ type MongoDB struct {
 	TracksCollectionName string
 }
 
+//MongoDBWebHook ...
 type MongoDBWebHook struct {
 	DatabaseURL            string
 	DatabaseName           string
