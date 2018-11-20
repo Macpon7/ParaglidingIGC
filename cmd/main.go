@@ -20,12 +20,12 @@ func main() {
 	startTime := time.Now()
 
 	storage.TrackDB = &storage.MongoDB{
-		DatabaseURL:          "mongodb://<usr>:<pw>@ds111608.mlab.com:11608/paraglide",
+		DatabaseURL:          "mongodb://adrianceng:$MONGODBPW@ds111608.mlab.com:11608/paraglide",
 		DatabaseName:         "paraglide",
 		TracksCollectionName: "IGCTracks",
 	}
 	storage.WebhookDB = &storage.MongoDBWebHook{
-		DatabaseURL:            "mongodb://<usr>:<pw>@ds111608.mlab.com:11608/paraglide",
+		DatabaseURL:            "mongodb://adrianceng:$MONGODBPW@ds111608.mlab.com:11608/paraglide",
 		DatabaseName:           "paraglide",
 		WebhooksCollectionName: "IGCHooks",
 	}
