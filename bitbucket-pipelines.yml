@@ -1,7 +1,8 @@
-pipelines:
-  default:
-    - step:
-        name: Deploy to Heroku
-        deployment: test
-        script:
-          - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD
+image: golang:1.7
+  pipelines:
+    default:
+      - step:
+          name: Deploy to Heroku
+          deployment: test
+          script:
+            - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD
