@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"paraglidingigc/pkg/storage"
+	"bitbucket.org/adrianceng/paraglidingigc/pkg/storage"
 )
 
 //TracksCountHandler returns the total amount of tracks in the database
