@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	"bitbucket.org/adrianceng/paraglidingigc/pkg/storage"
+	"paraglidingigc/pkg/storage"
 )
 
 //WebhookOut returns

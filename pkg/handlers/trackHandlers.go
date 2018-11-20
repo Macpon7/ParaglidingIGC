@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"bitbucket.org/adrianceng/paraglidingigc/pkg/storage"
+	"paraglidingigc/pkg/storage"
 
 	"github.com/gorilla/mux"
 	"github.com/marni/goigc"

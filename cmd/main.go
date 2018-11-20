@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"time"
 
-	"bitbucket.org/adrianceng/paraglidingigc/pkg/handlers"
-	"bitbucket.org/adrianceng/paraglidingigc/pkg/storage"
+	"paraglidingigc/pkg/handlers"
+	"paraglidingigc/pkg/storage"
 
 	"github.com/gorilla/mux"
 )
