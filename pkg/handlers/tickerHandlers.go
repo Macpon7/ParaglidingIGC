@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"strconv"
 	"time"
@@ -11,7 +12,11 @@ import (
 	"github.com/gorilla/mux"
 )
 
-//TickerOutOldestHandler ...
+/*TickerOutOldestHandler returns the most recent timestamp,
+the first timestamp, and the last timestamp in the returning
+array. It then returns an array containing the IDs of the first
+five tracks in the catabase that were added, and the amount
+of time the request took to process in ms.*/
 func TickerOutOldestHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		t1 := time.Now().Unix()
@@ -23,7 +28,8 @@ func TickerOutOldestHandler() http.Handler {
 	})
 }
 
-//TickerOutLatestHandler ...
+/*TickerOutLatestHandler returns the id of the last track to
+have been added.*/
 func TickerOutLatestHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		temp := storage.TrackDB.ReadTimeStamps()
@@ -33,17 +39,20 @@ func TickerOutLatestHandler() http.Handler {
 	})
 }
 
-//TickerOutSpecificHandler ...
+/*TickerOutSpecificHandler returns the most recent timestamp,
+the timestamp after the input, and the last timestamp in the
+returning array. It then returns an array containing the IDs
+of the 5 next tracks chronologically after the input, and the
+amount of time the request took to process in ms. */
 func TickerOutSpecificHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		t1 := time.Now().Unix()
-		vars := mux.Vars(r)
-		temp := vars["timestamp"]
+		temp := mux.Vars(r)["timestamp"]
 		tsIn, err := strconv.ParseInt(temp, 10, 64)
 		if err != nil {
-			//!Handle me
+			log.Print("Coult not parse timestamp. Bad Request.", err)
 			return
-		}
+        }
 		var out storage.TickerResponse
 		out = storage.TrackDB.ReadSpecificTicker(tsIn)
 		t2 := time.Now().Unix()

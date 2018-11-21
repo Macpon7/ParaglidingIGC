@@ -20,12 +20,12 @@ func main() {
 	startTime := time.Now()
 
 	storage.TrackDB = &storage.MongoDB{
-		DatabaseURL:          "mongodb://adrianceng:$MONGODBPW@ds111608.mlab.com:11608/paraglide",
+		DatabaseURL:          "mongodb://adrianceng:Glassheisen101@ds111608.mlab.com:11608/paraglide",
 		DatabaseName:         "paraglide",
 		TracksCollectionName: "IGCTracks",
 	}
 	storage.WebhookDB = &storage.MongoDBWebHook{
-		DatabaseURL:            "mongodb://adrianceng:$MONGODBPW@ds111608.mlab.com:11608/paraglide",
+		DatabaseURL:            "mongodb://adrianceng:Glassheisen101@ds111608.mlab.com:11608/paraglide",
 		DatabaseName:           "paraglide",
 		WebhooksCollectionName: "IGCHooks",
 	}
@@ -49,7 +49,7 @@ func main() {
 	//ticker path
 	r.Handle("/paragliding/api/ticker", handlers.TickerOutOldestHandler()).Methods("GET")
 	r.Handle("/paragliding/api/ticker/latest", handlers.TickerOutLatestHandler()).Methods("GET")
-	r.Handle("/paragliding/api/ticker/{timespamp}", handlers.TickerOutSpecificHandler()).Methods("GET")
+	r.Handle("/paragliding/api/ticker/{timestamp}", handlers.TickerOutSpecificHandler()).Methods("GET")
 
 	//webhook path
 	r.Handle("/paragliding/api/webhook/new_track", handlers.WebhookRegisterHandler()).Methods("POST")

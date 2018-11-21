@@ -46,7 +46,7 @@ func (db *MongoDB) AddTrack(inFile TrackMetaInf) string {
 
 	err = session.DB(db.DatabaseName).C(db.TracksCollectionName).Insert(inFile)
 	if err != nil {
-		//!Handle me
+		//TODO handle this
 		return ""
 	}
 
@@ -63,7 +63,7 @@ func (db *MongoDB) CountTracks() int {
 
 	out, err := session.DB(db.DatabaseName).C(db.TracksCollectionName).Count()
 	if err != nil {
-		//!Handle me
+		//TODO handle this
 		return 0
 	}
 	return out
@@ -79,7 +79,7 @@ func (db *MongoDB) DeleteTracks() {
 
 	err = session.DB(db.DatabaseName).C(db.TracksCollectionName).DropCollection()
 	if err != nil {
-		//!Handle me
+		//TODO handle this
 		return
 	}
 	return
@@ -97,7 +97,7 @@ func (db *MongoDB) ReadTrackIDS() []string {
 
 	err = session.DB(db.DatabaseName).C(db.TracksCollectionName).Find(bson.M{}).All(&tempTracks)
 	if err != nil {
-		//!Handle me
+		//TODO handle this
 		return make([]string, 0)
 	}
 
@@ -121,7 +121,7 @@ func (db *MongoDB) ReadTimeStamps() []int64 {
 
 	err = session.DB(db.DatabaseName).C(db.TracksCollectionName).Find(nil).Select(bson.M{"timestamp": response}).Sort("timestamp").All(&response)
 	if err != nil {
-		//!Handle me
+		//TODO handle this
 		return response
 	}
 
@@ -141,7 +141,7 @@ func (db *MongoDB) ReadTrack(id string) TrackMetaInf {
 
 	err = session.DB(db.DatabaseName).C(db.TracksCollectionName).Find(bson.M{"_id": requestID}).One(&response)
 	if err != nil {
-		//!Handle me
+		//TODO handle this
 		return response
 	}
 
@@ -170,24 +170,23 @@ func (db *MongoDB) ReadTicker() TickerResponse {
 
 	err = session.DB(db.DatabaseName).C(db.TracksCollectionName).Find(nil).Select(bson.M{"_id": idSlice, "timestamp": tsSlice}).Sort("timestamp").All(&reciever)
 	if err != nil {
-		//!Handle me
+		//TODO handle this
 		return out
 	}
 
-	var cap int
-	if len(reciever) < 5 {
-		cap = len(reciever)
-	} else {
-		cap = 5
+	max := len(reciever)
+	top := max
+	if top > 5 {
+		top = 5
 	}
 
-	for i := 0; i < cap; i++ {
+	for i := 0; i < top; i++ {
 		idSlice = append(idSlice, reciever[i].ID)
 	}
 	out = TickerResponse{
-		TLatest:    reciever[len(reciever)-1].Timestamp,
+		TLatest:    reciever[max-1].Timestamp,
 		TStart:     reciever[0].Timestamp,
-		TStop:      reciever[cap-1].Timestamp,
+		TStop:      reciever[top-1].Timestamp,
 		TrackIDs:   idSlice,
 		Processing: 0,
 	}
@@ -216,7 +215,7 @@ func (db *MongoDB) ReadSpecificTicker(timeStamp int64) TickerResponse {
 
 	err = session.DB(db.DatabaseName).C(db.TracksCollectionName).Find(nil).Select(bson.M{"_id": idSlice, "timestamp": tsSlice}).Sort("timestamp").All(&reciever)
 	if err != nil {
-		//!Handle me
+		//TODO handle this
 		return out
 	}
 
