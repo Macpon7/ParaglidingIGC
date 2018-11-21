@@ -32,6 +32,8 @@ func main() {
 
 	storage.TrackDB.Init()
 
+	log.Print("Database initialized, listening on port 8080")
+
 	r := mux.NewRouter()
 
 	//api base path

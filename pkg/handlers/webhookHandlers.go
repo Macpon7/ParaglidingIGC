@@ -3,6 +3,7 @@ package handlers
 import (
 	"bytes"
 	"encoding/json"
+	"log"
 	"net/http"
 	"paragliding/pkg/storage"
 	"strconv"
@@ -58,11 +59,15 @@ func NotifyWebhookSubscribers() {
 		out.Content += "s "
 		out.Content += strconv.FormatInt(processTime, 10)
 		out.Content += "ms)\n"
-		raw, _ := json.Marshal(out)
+		raw, err := json.Marshal(out)
+		if err != nil {
+			log.Print("Could not marshal", err)
+			return
+		}
 		resp, err := http.Post(hooks[key].URL, "application/json", bytes.NewBuffer(raw))
 		if err != nil {
-			//!Handle me
-			panic(err)
+			log.Print("Could not notify webhook")
+			return
 		}
 		defer resp.Body.Close()
 	}
